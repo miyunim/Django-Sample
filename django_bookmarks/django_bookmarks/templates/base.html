@@ -3,16 +3,20 @@
 <html>
 	<head>
 		<title>장고 북마크 : {% block title %}{% endblock %}</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
 		<link rel="stylesheet" href="/site_media/style.css" type="text/css" />
+		{% block external %}{% endblock %}
 	</head>
 	<body>
 		<div id="nav">
-			<a href="/">home</a> :
+			<a href="/">home</a> |
 			{% if user.is_authenticated %}
-				{{ user.username }}님, 안녕하세요.
-				(<a href="/logout">로그아웃</a>
+				<a href="/save/">북마크 추가</a> |
+				<a href="/search/">검색</a> |
+					{{ user.username }}님, 안녕하세요.
+				(<a href="/logout">로그아웃</a>)
 			{% else %}
-				<a href="/login/">로그인</a>
+				<a href="/login/">로그인</a> |
 				<a href="/register/">가입</a>
 			{% endif %}
 		</div>
